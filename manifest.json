@@ -1,0 +1,7 @@
+{
+  "name": "repo-extensions",
+  "type": "exb-web-extension-repo",
+  "description": "This is a sample extension repository.",
+  "copyright": "",
+  "license": ""
+}
