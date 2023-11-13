@@ -124,7 +124,7 @@ const Widget = (props: AllWidgetProps<any>) => {
   }
 
 
-  // Método para salvar o evento na Feature Layer
+  // 5 - Método para salvar o evento na Feature Layer
   const addNewEvent= (): void => {
     const featureLayerDataSource = dataSource as FeatureLayerDataSource;
 
@@ -235,7 +235,7 @@ const Widget = (props: AllWidgetProps<any>) => {
           </Label>
         </Row>
         {/* 
-            Ao clicar no botão de salvar evento
+            4 - Ao clicar no botão de salvar evento
             Salva o evento na Feature Layer
         */}
         <Row className='justify-content-center'>

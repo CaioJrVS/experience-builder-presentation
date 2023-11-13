@@ -20,6 +20,7 @@ const Widget = (props: AllWidgetProps<any>) => {
   const [file, setFile] = React.useState<string>('')
   const [image, setImage] = React.useState<string>('')
 
+  // 4 - State para armazenar o ponto criado no mapa
   const [graphic, setGraphic] = React.useState<Graphic>(null)
 
   const [dataSource, setDataSource] = React.useState<DataSource>(null)
@@ -79,7 +80,7 @@ const Widget = (props: AllWidgetProps<any>) => {
     return <></>
   }
 
-  // Inicia processo de criação de ponto no mapa (visual)
+  // 2 - Inicia processo de criação de ponto no mapa (visual)
   const enableCreatePoint= (event): void => {
     // Objeto para desenhar no mapa
     const draw = new Draw({
@@ -89,7 +90,7 @@ const Widget = (props: AllWidgetProps<any>) => {
     // Inicia a criação do ponto
     const action = draw.create("point");
 
-    // Eventos para atulizar o ponto no mapa
+    // Eventos para atulizar o desenho do ponto no mapa
     action.on("cursor-update", function (evt) {
       createPointGraphic(evt.coordinates);
     });
@@ -98,7 +99,7 @@ const Widget = (props: AllWidgetProps<any>) => {
     });
   }
   
-  // Método para salvar o ponto criado no mapa
+  // 3 - Método para salvar o ponto criado no mapa
   const createPointGraphic = (coordinates) => {
     jmv.view.graphics.removeAll();
     const point = {
@@ -123,7 +124,7 @@ const Widget = (props: AllWidgetProps<any>) => {
   }
 
 
-  // Método para salvar o evento na Feature Layer
+  // 5 - Método para salvar o evento na Feature Layer
   const addNewEvent= (): void => {
     const featureLayerDataSource = dataSource as FeatureLayerDataSource;
 
@@ -216,6 +217,10 @@ const Widget = (props: AllWidgetProps<any>) => {
             type="file" />
           </Label>
         </Row>
+        {/*  
+            1 - Ao Clicar no botão de adicionar ponto
+            Inicia o draw do ponto no mapa
+        */}
         <Row className='justify-content-center'>
           <Label>
           Adicionar Ponto
@@ -230,6 +235,10 @@ const Widget = (props: AllWidgetProps<any>) => {
             </Button>
           </Label>
         </Row>
+        {/* 
+            4 - Ao clicar no botão de salvar evento
+            Salva o evento na Feature Layer
+        */}
         <Row className='justify-content-center'>
           <Button className='btn btn-primary'
             onClick={addNewEvent}

@@ -14,7 +14,7 @@ const Setting = (props: AllWidgetSettingProps<any>) => {
     )
   }
 
-  // Metodo para salvar o Data Source selecionado no props do widget.tsx
+  // 2 - Metodo para salvar o Data Source selecionado no props do widget.tsx
   const onDataSourceChange = (useDataSource: UseDataSource[]) => {
     props.onSettingChange(
       {
@@ -29,8 +29,7 @@ const Setting = (props: AllWidgetSettingProps<any>) => {
     <div>
       <MapWidgetSelector onSelect={onMapWidgetSelected} useMapWidgetIds={props.useMapWidgetIds} />
 
-      {/* Adiciona componente para apontar o Data Source que será utilizado para pegar os dados da feature */}
-
+      {/* 1 - Adiciona componente para apontar o Data Source que será utilizado para pegar os dados da feature */}
       <DataSourceSelector
         types={Immutable([AllDataSourceTypes.FeatureLayer])}
         useDataSources={props.useDataSources}
