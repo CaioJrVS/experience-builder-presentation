@@ -1,4 +1,4 @@
-## Ordem de alteração no Widget Customizado
+## Ordem de features no Widget Customizado
 
 #### INICIO: 
 - Adicionar Widget de Mapa no Experience Builder

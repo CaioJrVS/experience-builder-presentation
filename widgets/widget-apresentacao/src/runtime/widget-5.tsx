@@ -53,7 +53,7 @@ const Widget = (props: AllWidgetProps<any>) => {
     setEventData(record.getData())
   }, [objectId])
 
-  // Pega os dados do DataSource e carrega nos inputs
+  // 1 - Pega os dados do DataSource e carrega nos inputs
   const setEventData = (recordData) =>{
     setTitle(recordData['titulo'])
     setDescription(recordData['descricao'])
@@ -90,7 +90,7 @@ const Widget = (props: AllWidgetProps<any>) => {
         </DataSourceComponent>
       }
 
-        {/* Adiciona Value e onChange aos inputs */}
+        {/* 2 - Adiciona Value e onChange aos inputs */}
         <Container fluid >
         <Row className='justify-content-center'>
           <Container fluid className='text-center bg-primary'>

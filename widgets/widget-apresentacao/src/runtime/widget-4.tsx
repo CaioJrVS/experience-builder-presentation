@@ -9,11 +9,11 @@ const Widget = (props: AllWidgetProps<any>) => {
   const [jmv, setJmv] = React.useState<JimuMapView>(null)
   const [objectId, setObjectId] = React.useState<number>(null)
 
-  // Armazena o DataSource da layer selecionada para ter acesso aos dados
+  // 4 - Armazena o DataSource da layer selecionada para ter acesso aos dados
   const [dataSource, setDataSource] = React.useState<DataSource>(null)
 
-  // Inicialmente o coponente de DataSource não tem dados
-  // Ele espera que uma query seja feita para então carregar os dados
+  // 2 - Inicialmente o coponente de DataSource vem vazio
+  // Ele espera que uma query para então carregar os dados
   const [query, setQuery] = React.useState<FeatureLayerQueryParams>({
     where: '1=1',
     outFields: ['*'],
@@ -41,9 +41,8 @@ const Widget = (props: AllWidgetProps<any>) => {
     });
   }
 
-  // cria um hook que é executado toda vez que o objectId é alterado
+  // 5 - cria um hook que é executado toda vez que o objectId é alterado
   useEffect(() =>{
-    // Pega o record do DataSource que tem o objectId selecionado
     const record = dataSource?.getRecords().find((record) => record.getData()['objectid'] === objectId) || null
     if (!record) {
       return
@@ -51,12 +50,12 @@ const Widget = (props: AllWidgetProps<any>) => {
     setEventData(record.getData())
   }, [objectId])
 
-  // Próximo passo: pegar os dados da feature clicada e carregar nos inputs
+  // 6 - Próximo passo: pegar os dados da feature clicada e carregar nos inputs
   const setEventData = (recordData) =>{
     return
   }
   
-
+  // 3 - Componente de DataSource espera uma child function para renderizar os dados
   const renderData = (ds: DataSource) => {
     setDataSource(ds)
 
@@ -70,7 +69,7 @@ const Widget = (props: AllWidgetProps<any>) => {
         <JimuMapViewComponent useMapWidgetId={props.useMapWidgetIds[0]} onActiveViewChange={activeChageViewHandler} />
       }
 
-      {/* Componente do DataSource para ter acesso aos dados da layer selecionada */}
+      {/* 1 - Componente do DataSource para ter acesso aos dados da layer selecionada */}
       {
         props.useDataSourcesEnabled && props.useDataSources && props.useDataSources.length > 0 &&
         <DataSourceComponent useDataSource={props.useDataSources[0]}

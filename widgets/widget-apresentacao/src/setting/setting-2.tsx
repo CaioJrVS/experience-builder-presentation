@@ -4,7 +4,7 @@ import { type AllWidgetSettingProps } from 'jimu-for-builder'
 import { MapWidgetSelector } from 'jimu-ui/advanced/setting-components'
 
 const Setting = (props: AllWidgetSettingProps<any>) => {
-  // Método para colocar na props do widget.tsx o id do mapview
+  // 2 - Método para colocar na props do widget.tsx o id do mapview
   const onMapWidgetSelected = (useMapViewsId: string[]) => {
     props.onSettingChange(
       {
@@ -16,7 +16,7 @@ const Setting = (props: AllWidgetSettingProps<any>) => {
 
   return (
     <div>
-      {/* Componente para pegar o ID do mapview do widget de mapa selecionado */}
+      {/* 1 - Componente para pegar o ID do mapview do widget de mapa selecionado */}
       <MapWidgetSelector onSelect={onMapWidgetSelected} useMapWidgetIds={props.useMapWidgetIds} />
     </div>
   )
